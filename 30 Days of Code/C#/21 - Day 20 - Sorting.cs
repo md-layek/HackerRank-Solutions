@@ -1,46 +1,52 @@
-// ========================
-//       Information
-// ========================
-
-// Direct Link: https://www.hackerrank.com/challenges/30-sorting/problem
-// Difficulty: Easy
-// Max Score: 30
-// Language: C#
-
-// ========================
-//         Solution
-// ========================
-
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
 using System;
 
-class Solution {
-    static void Main(String[] args) {
-        int numberInput = Convert.ToInt32(Console.ReadLine());
 
-        string[] arrayInput = Console.ReadLine().Split(' ');
-        int[] numbersArray = Array.ConvertAll(arrayInput, Int32.Parse);
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> a = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(aTemp => Convert.ToInt32(aTemp)).ToList();
+
+        // Write your code here
+        int numSwaps=0;
         
-        // Write Your Code Here
-        int numberOfSwaps = 0;
-
-        for (int i = 0; i < numberInput; i++) {
-            for (int j = 0; j < numberInput - 1; j++) {
-                if (numbersArray[j] > numbersArray[j + 1]) {
-                    Array.Reverse(numbersArray, j, 2);
-                    numberOfSwaps++;
+        for(int i=0; i < n; i++){
+             
+           
+            for(int j=0; j < n-1; j++){
+                
+                if(a[j] > a[j+1]){
+                    int tmp=a[j];
+                    a[j]=a[j+1];
+                    a[j+1]=tmp;
+                    numSwaps++;
                 }
             }
-
-            if (numberOfSwaps == 0) {
+            
+            if(numSwaps == 0){
                 break;
             }
         }
-
-        int firstPosition = numbersArray[0];
-        int lastPosition = numbersArray[numbersArray.Length - 1];
-
-        Console.WriteLine($"Array is sorted in {numberOfSwaps} swaps.");
-        Console.WriteLine($"First Element: {firstPosition}");
-        Console.WriteLine($"Last Element: {lastPosition}");
+        
+        Console.WriteLine($"Array is sorted in {numSwaps} swaps.");
+        Console.WriteLine($"First Element: {a[0]}");
+        Console.WriteLine($"Last Element: {a[n-1]}");
+         
+        
     }
 }
