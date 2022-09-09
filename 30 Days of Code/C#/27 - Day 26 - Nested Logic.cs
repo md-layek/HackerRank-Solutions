@@ -1,44 +1,37 @@
-// ========================
-//       Information
-// ========================
-
-// Direct Link: https://www.hackerrank.com/challenges/30-nested-logic/problem
-// Difficulty: Easy
-// Max Score: 30
-// Language: C#
-
-// ========================
-//         Solution
-// ========================
-
 using System;
-
+using System.Collections.Generic;
+using System.IO;
 class Solution {
     static void Main(String[] args) {
-        var actually = Console.ReadLine().Split(' ');
-        var day_a = int.Parse(actually[0]);
-        var month_a = int.Parse(actually[1]);
-        var year_a = int.Parse(actually[2]);
-
-        var expected = Console.ReadLine().Split(' ');
-        var day_e = int.Parse(expected[0]);
-        var month_e = int.Parse(expected[1]);
-        var year_e = int.Parse(expected[2]);
-
-        var fine = 0;
-
-        if (year_a > year_e) {
-            fine = 10000;
-        }
-        else if (year_a == year_e) {
-            if (month_a > month_e) {
-                fine = (month_a - month_e) * 500;
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        
+        var calendar=Console.ReadLine().Split(' ');
+        var day_calendar=int.Parse(calendar[0]);
+        var month_calendar=int.Parse(calendar[1]);
+        var year_calendar=int.Parse(calendar[2]);
+        
+        var expected=Console.ReadLine().Split(' ');
+        var day_expected=int.Parse(expected[0]);
+        var month_expected=int.Parse(expected[1]);
+        var year_expected=int.Parse(expected[2]);
+        
+        var fine=0;
+        
+        if(year_calendar > year_expected){
+            fine=10000;
+        } 
+        
+        else if(year_calendar == year_expected){
+            if(month_calendar > month_expected ){
+                
+                fine= 500 * (month_calendar - month_expected);
             }
-            else if (month_a == month_e && day_a > day_e) {
-                fine = (day_a - day_e) * 15;
+            else if(day_calendar > day_expected && month_calendar == month_expected){
+                fine = 15 * (day_calendar - day_expected);
             }
         }
-
+        
         Console.WriteLine(fine);
+
     }
 }
