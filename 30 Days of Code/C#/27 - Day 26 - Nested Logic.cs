@@ -1,3 +1,16 @@
+// ========================
+//       Information
+// ========================
+
+// Direct Link: https://www.hackerrank.com/challenges/30-nested-logic/problem
+// Difficulty: Easy
+// Max Score: 30
+// Language: C#
+
+// ========================
+//         Solution
+// ========================
+
 using System;
 using System.Collections.Generic;
 using System.IO;
